@@ -8,15 +8,15 @@ import model.Customer;
 public class CustomerService {
 	
 	private Map<String, Customer> customers;
+	
+	private static final CustomerService instance = new CustomerService();
 
 	public CustomerService() {
 		customers = new HashMap<String, Customer>();
-		
-		addCustomer(new Customer("id001", "Alice", "alice.hansung.ac.kr"));
-		addCustomer(new Customer("id002", "Bob", "Bob.hansung.ac.kr"));
-		addCustomer(new Customer("id003", "Charlie", "Charlie.hansung.ac.kr"));
-		addCustomer(new Customer("id004", "David", "David.hansung.ac.kr"));
-		addCustomer(new Customer("id005", "Trudy", "Trudy.hansung.ac.kr"));
+	}
+	
+	public static CustomerService getInstance() {
+		return instance;
 	}
 	
 	public void addCustomer(Customer customer) {
@@ -28,5 +28,16 @@ public class CustomerService {
 			return(customers.get(id.toLowerCase()));
 		else
 			return null;
+	}
+	
+	public Customer login(String id, String password){
+		try {
+			customers.get(id.toLowerCase());
+			return customers.get(id.toLowerCase());
+		} 
+		catch(NullPointerException  e) {
+			return null;
+		}
+		
 	}
 }

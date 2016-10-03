@@ -35,10 +35,8 @@ public class Home extends HttpServlet {
 		
 		if(action.equals("login"))
 			page = "/view/loginform.jsp";
-		else if(action.equals("help"))
-			page = "/view/help.jsp";
-		else
-			page = "/view/error.jsp";
+		else if(action.equals("register"))
+			page = "/view/registerForm.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(page);
 		dispatcher.forward(request, response);
